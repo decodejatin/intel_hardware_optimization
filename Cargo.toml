@@ -1,0 +1,25 @@
+[package]
+name = "intel-mac-parity"
+version = "0.1.0"
+edition = "2021"
+description = "Intel Core Ultra 5 125H Optimization Playbook — Achieving Apple Silicon Parity"
+
+[dependencies]
+core_affinity = "0.8"
+rayon = "1.8"
+wide = "0.7"
+libc = "0.2"
+wgpu = "24.0"
+pollster = "0.4"
+openvino = { version = "0.6", features = ["runtime-linking"] }
+
+[profile.release]
+opt-level = 3             # Maximum optimization (O3)
+lto = "fat"               # Cross-crate Link-Time Optimization (slower to compile, faster to run)
+codegen-units = 1         # Prevents parallel code generation for deeper optimizations
+panic = "abort"           # Removes unwind tables to reduce binary size and branch overhead
+strip = true              # Strips debug symbols (binary runs faster in CPU cache)
+
+# For maximum number crunching performance:
+[profile.release.package."*"]
+opt-level = 3

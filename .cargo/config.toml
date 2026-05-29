@@ -1,0 +1,3 @@
+[build]
+# Forces the compiler to use all instruction sets available on the host machine (Meteor Lake)
+rustflags = ["-C", "target-cpu=native"]
