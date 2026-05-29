@@ -13,3 +13,4 @@ pub mod simd_vectorization;
 pub mod memory;
 pub mod compute_offload;
 pub mod system_tuner;
+pub mod power_tuning;

@@ -4,7 +4,7 @@
 //! layer, and generates an optimization script for your machine.
 
 use intel_mac_parity::{
-    compute_offload, memory, simd_vectorization, system_tuner, thread_pinning,
+    compute_offload, memory, power_tuning, simd_vectorization, system_tuner, thread_pinning,
 };
 use std::fs;
 
@@ -23,6 +23,10 @@ fn main() {
     // ── System Audit ─────────────────────────────────────────────────────
     println!("━━━ System Audit ━━━");
     system_tuner::print_audit();
+    println!();
+    
+    // ── Power Tuning ─────────────────────────────────────────────────────
+    power_tuning::print_power_limits();
     println!();
 
     // ── Layer 1: Core Topology & Thread Pinning ──────────────────────────
