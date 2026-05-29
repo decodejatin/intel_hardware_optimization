@@ -12,6 +12,7 @@ libc = "0.2"
 wgpu = "24.0"
 pollster = "0.4"
 openvino = { version = "0.6", features = ["runtime-linking"] }
+mimalloc = "0.1"
 
 [profile.release]
 opt-level = 3             # Maximum optimization (O3)

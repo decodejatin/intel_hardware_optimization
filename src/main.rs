@@ -8,6 +8,11 @@ use intel_mac_parity::{
 };
 use std::fs;
 
+use mimalloc::MiMalloc;
+
+#[global_allocator]
+static GLOBAL: MiMalloc = MiMalloc;
+
 fn main() {
     println!();
     println!("╔══════════════════════════════════════════════════════════════╗");

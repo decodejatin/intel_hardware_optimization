@@ -2,7 +2,6 @@
 # Intel Core Ultra 5 125H Performance Optimization Script
 # Run with: sudo bash optimize.sh
 set -e
-PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
 
 echo '=== Intel Core Ultra 5 125H Performance Tuning ==='
 
@@ -33,7 +32,7 @@ sysctl -w kernel.numa_balancing=0
 
 # Disable energy-aware scheduling (forces scheduler to use P-cores)
 if [ -f /proc/sys/kernel/sched_energy_aware ]; then
-  echo 0 > /proc/sys/kernel/sched_energy_aware 2>/dev/null || true
+  echo 0 > /proc/sys/kernel/sched_energy_aware
   echo '  ✓ Energy-aware scheduling disabled'
 fi
 
