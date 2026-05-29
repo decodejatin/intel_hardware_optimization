@@ -17,7 +17,7 @@ openvino = { version = "0.6", features = ["runtime-linking"] }
 opt-level = 3             # Maximum optimization (O3)
 lto = "fat"               # Cross-crate Link-Time Optimization (slower to compile, faster to run)
 codegen-units = 1         # Prevents parallel code generation for deeper optimizations
-panic = "abort"           # Removes unwind tables to reduce binary size and branch overhead
+panic = "unwind"         # Use unwind to allow catch_unwind for graceful error handling
 strip = true              # Strips debug symbols (binary runs faster in CPU cache)
 
 # For maximum number crunching performance:
