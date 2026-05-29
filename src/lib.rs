@@ -1,14 +1,15 @@
-//! # Intel Core Ultra 5 125H Optimization Library
+//! # Intel Core Ultra 5 125H Optimization Suite
 //!
-//! This crate implements four optimization layers to achieve Apple Silicon
-//! performance parity on the Intel Core Ultra 5 125H (Meteor Lake):
+//! Real implementation of four optimization layers + system tuner:
 //!
-//! 1. **Thread Pinning** — P-Core affinity via `core_affinity` + `rayon`
-//! 2. **SIMD Vectorization** — Explicit AVX2 operations via `wide`
-//! 3. **Memory Architecture** — Zero-copy wgpu buffers + page-locked memory
+//! 1. **Thread Pinning** — Auto-detected P/E/LP core topology + affinity
+//! 2. **SIMD Vectorization** — AVX2 f32x8 with real benchmarks
+//! 3. **Memory Architecture** — mlock + hugepages + zero-copy wgpu
 //! 4. **Compute Offload** — GPU/NPU inference via OpenVINO
+//! 5. **System Tuner** — Kernel parameter audit and optimization
 
 pub mod thread_pinning;
 pub mod simd_vectorization;
 pub mod memory;
 pub mod compute_offload;
+pub mod system_tuner;
