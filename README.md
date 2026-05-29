@@ -61,3 +61,10 @@ sudo bash install_startup.sh
 3. Reduces `vm.swappiness` to `10`.
 4. Enables transparent hugepages (`always`).
 5. Disables `sched_energy_aware` to prevent the kernel from overriding our P-Core pinning.
+6. **(Level 2)** Automatically overrides the hardware PL1 limits to 45W for sustained performance.
+
+---
+
+## 🏆 Final Results
+
+For a deep dive into exactly how much performance we unlocked, read the [Final Benchmark Comparison Report](05-final-benchmarks-comparison.md). It details the precise latency, thread jitter, and sustained thermal parity achieved against an Apple M2/M3 target.
