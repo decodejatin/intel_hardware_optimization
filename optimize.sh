@@ -39,4 +39,12 @@ fi
 # Raise mlock limit for pinned memory buffers
 ulimit -l unlimited 2>/dev/null || true
 
+# Raise PL1 (Sustained Power) to 45W to prevent aggressive thermal throttling
+RAPL_PATH="/sys/class/powercap/intel-rapl:0/constraint_0_power_limit_uw"
+if [ -f "$RAPL_PATH" ]; then
+  # 45 Watts = 45,000,000 microWatts
+  echo 45000000 > "$RAPL_PATH" 2>/dev/null || true
+  echo '  ✓ PL1 sustained power limit raised to 45W'
+fi
+
 echo '=== All optimizations applied ==='
